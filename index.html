@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nick Cennamo-Smith | Mortzeel's Lost &amp; Found</title>
+<meta name="description" content="Mortzeel's Lost &amp; Found, the crime-fantasy series by Nick Cennamo-Smith. Paperbacks, hardbacks, audiobooks, the Gods of Alda tarot set and his book fair table.">
+<meta property="og:title" content="A homepage for Nick Cennamo-Smith, made by Sparsh Saini">
+<meta property="og:description" content="A homepage idea for Nick Cennamo-Smith and Mortzeel's Lost &amp; Found, made by Sparsh Saini. Not his official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/nickcennamosmith/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23e3ddd0'/><path d='M16 3 29 16 16 29 3 16z' fill='none' stroke='%23231f1c' stroke-width='3'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/plate.jpg">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* From the Mortzeel's Lost & Found covers: worn parchment, the faint magic circles drawn on it,
+   the dark Art Deco frame rules with their yellow glow, white flared capitals, and one colour per book
+   (yellow for the Wizard, red for A Noble Pursuit, blue for The Hart of Winter, navy for Death from Above). */
+:root {
+  --parch: #e3ddd0;
+  --parch-2: #d8d0bf;
+  --rule: #231f1c;
+  --glow: #e6d65a;
+  --ink: #2a2420;
+  --soft: #6b6056;
+  --wiz: #d8c63a;
+  --noble: #a3282b;
+  --hart: #5d9fbf;
+  --death: #2b3166;
+  --qalkar: #d9772a;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --text: "EB Garamond", Garamond, Georgia, serif;
+  --gut: clamp(1rem, 5vw, 4rem);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--parch); color: var(--ink); font-family: var(--text); font-size: 1.18rem; line-height: 1.55; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--rule); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1; margin: 0; }
+
+.strip { position: relative; z-index: 30; background: var(--rule); color: var(--parch); font-size: .95rem; text-align: center; padding: .45rem var(--gut); }
+
+/* ---------- the frame's diamond ornament is the nav ---------- */
+.dia { position: fixed; z-index: 40; left: 50%; bottom: 10px; transform: translateX(-50%); width: 92px; height: 46px; border: 0; padding: 0; background: none; cursor: pointer; }
+.dia svg { width: 100%; height: 100%; overflow: visible; }
+.dia path { fill: none; stroke: var(--rule); stroke-width: 3.2; }
+.dia .g { stroke: var(--glow); stroke-width: 7; opacity: .7; }
+.dia .bg { fill: rgba(227, 221, 208, .92); stroke: none; }
+.index { position: fixed; z-index: 50; inset: 0; background: rgba(35, 31, 28, .5); display: none; }
+.index.open { display: block; }
+.index .sheet { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: min(560px, 100%); background: var(--parch); padding: 1.6rem var(--gut) 4.5rem; border-top: 3px solid var(--rule); box-shadow: 0 -4px 0 var(--glow); }
+.index h2 { font-size: 1.1rem; letter-spacing: .08em; margin-bottom: .6rem; }
+.index ol { list-style: none; margin: 0; padding: 0; }
+.index a { display: flex; justify-content: space-between; gap: 1rem; padding: .6rem 0; border-bottom: 1px solid rgba(35, 31, 28, .25); text-decoration: none; font-family: var(--display); font-size: 1.15rem; }
+.index a span:last-child { font-family: var(--text); font-style: italic; color: var(--soft); font-size: 1rem; }
+
+/* ---------- the drop ---------- */
+.hero { position: relative; height: 330vh; }
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--parch-2); }
+.cover { position: absolute; container-type: size; aspect-ratio: 1188 / 1836; height: min(calc(100svh - 150px), calc(100vw * 1.545)); left: 50%; top: 10px; transform: translateX(-50%); box-shadow: 0 0 0 1px rgba(35,31,28,.2), 6px 8px 0 rgba(35,31,28,.18); }
+.cover .in { position: absolute; inset: 0; overflow: hidden; will-change: transform; }
+.pl { position: absolute; will-change: transform, opacity; }
+.plate { inset: 0; width: 100%; height: 100%; }
+.sigils { inset: 0; width: 100%; height: 100%; opacity: 0; }
+.sword { left: 19.19%; top: 2.83%; width: 76.01%; transform-origin: 50% 30%; }
+.ttl { position: absolute; inset: 0; pointer-events: none; text-align: center; color: #fff; will-change: transform; }
+.ttl .w { font-family: var(--display); font-weight: 900; -webkit-text-stroke: 1.15cqw var(--rule); paint-order: stroke fill; text-shadow: 0 0 1.2cqw rgba(230, 214, 90, .95); }
+.ttl h1 { position: absolute; left: 7%; top: 3.6%; width: 88%; height: 16%; font-size: 1px; }
+.ttl h1 .m { position: absolute; left: 2%; top: -6%; font-size: 24.5cqw; line-height: 1; font-weight: 900; transform: scaleY(1.2); transform-origin: 0 0; }
+.ttl h1 .rt { position: absolute; left: 16.5%; top: -1%; font-size: 13cqw; line-height: 1; letter-spacing: -.005em; transform: scaleY(1.34); transform-origin: 0 0; white-space: nowrap; }
+.ttl h1 .lf { position: absolute; left: 16.8%; top: 60%; font-size: 9.6cqw; line-height: 1; font-weight: 900; color: #fff; letter-spacing: -.01em; transform: scaleY(1.18); transform-origin: 0 0; white-space: nowrap; -webkit-text-stroke: .9cqw var(--rule); }
+.ttl h1 .lf i { font-style: normal; font-size: .82em; }
+.ttl .sub { position: absolute; left: 0; right: 0; top: 21.6%; font-family: var(--display); font-weight: 900; font-size: 6.2cqw; color: #fff; -webkit-text-stroke: .8cqw var(--rule); paint-order: stroke fill; text-shadow: 0 0 .9cqw rgba(230, 214, 90, .95); }
+.ttl .by { position: absolute; left: 0; right: 0; top: 85.6%; font-family: var(--display); font-weight: 900; font-size: 4.9cqw; letter-spacing: .06em; color: #fff; -webkit-text-stroke: .8cqw var(--rule); paint-order: stroke fill; text-shadow: 0 0 .9cqw rgba(230, 214, 90, .95); }
+.cap { position: absolute; left: var(--gut); right: var(--gut); bottom: 62px; text-align: center; }
+.cap p { margin: 0 auto; max-width: 30rem; font-size: 1.12rem; line-height: 1.4; opacity: 0; will-change: opacity; }
+.cap p.c1 { opacity: 1; }
+.cap p.c2 { position: absolute; left: 0; right: 0; bottom: 0; pointer-events: none; }
+.cap p.c2.live { pointer-events: auto; }
+.cap .go { display: inline-block; margin-top: .5rem; font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: .06em; text-decoration: none; padding: .45rem 1rem .4rem; border: 2px solid var(--rule); box-shadow: 0 0 0 3px var(--parch-2), 0 0 0 5px var(--wiz); background: var(--parch); }
+.cap .go:hover { background: var(--rule); color: var(--parch); }
+@media (min-width: 900px) {
+  .cover { height: calc(100svh - 40px); top: 20px; left: 58%; }
+  .cap { left: var(--gut); right: auto; width: min(26rem, 30vw); top: 50%; bottom: auto; transform: translateY(-50%); text-align: left; }
+  .cap p { font-size: 1.35rem; }
+  .cap p.c2 { top: 0; bottom: auto; }
+}
+
+/* ---------- the ledger of cases ---------- */
+section.cases, section.desk, section.wares, section.nick, section.fair { padding: clamp(3.5rem, 9vw, 6.5rem) var(--gut); }
+.cases h2, .desk h2, .wares h2, .nick h2, .fair h2 { font-size: clamp(2.1rem, 7vw, 3.6rem); }
+.lede { max-width: 40rem; margin: .8rem 0 0; font-size: 1.25rem; }
+.ledger { list-style: none; margin: 2.2rem 0 0; padding: 0; border-top: 3px solid var(--rule); }
+.case { display: grid; grid-template-columns: 7.2rem 1fr; gap: 1.1rem; padding: 1.3rem 0; border-bottom: 1px solid rgba(35,31,28,.35); position: relative; }
+.case::before { content: ""; position: absolute; left: 0; top: -2px; width: 7.2rem; height: 4px; background: var(--c); }
+.case img { box-shadow: 4px 5px 0 rgba(35,31,28,.25); }
+.case h3 { font-size: 1.45rem; }
+.case .no { font-family: var(--display); font-size: .82rem; letter-spacing: .1em; color: var(--c); filter: brightness(.75); }
+.case p { margin: .35rem 0 0; font-size: 1.08rem; }
+.fmt { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .7rem; }
+.fmt a { font-family: var(--display); font-size: .85rem; font-weight: 700; letter-spacing: .04em; text-decoration: none; padding: .35rem .7rem .3rem; border: 2px solid var(--rule); background: var(--parch); }
+.fmt a:hover { background: var(--rule); color: var(--parch); }
+@media (min-width: 900px) {
+  .ledger { display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; }
+  .case { grid-template-columns: 9rem 1fr; }
+  .case::before { width: 9rem; }
+}
+
+.desk { background: #1d1a18; color: #ece6da; }
+.desk .lede { color: #c9c1b3; }
+.worlds { display: grid; gap: 2rem; margin-top: 2.2rem; }
+@media (min-width: 900px) { .worlds { grid-template-columns: repeat(3, 1fr); } }
+.world { display: grid; grid-template-columns: 38% 1fr; gap: 1rem; align-items: start; }
+.world h3 { font-size: 1.25rem; color: #fff; }
+.world p { margin: .4rem 0 0; font-size: 1.02rem; color: #d9d2c4; }
+.world a.read { display: inline-block; margin-top: .6rem; font-family: var(--display); font-size: .85rem; font-weight: 700; color: #fff; }
+
+.wares { background: var(--parch-2); }
+.shelf { display: grid; gap: 1.6rem; margin-top: 2rem; }
+@media (min-width: 700px) { .shelf { grid-template-columns: repeat(4, 1fr); } }
+.ware img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; border: 3px solid var(--rule); box-shadow: 0 0 0 3px var(--parch-2), 0 0 0 5px var(--glow); }
+.ware h3 { font-size: 1.05rem; margin-top: .9rem; }
+.ware p { margin: .25rem 0 0; font-size: 1rem; }
+.ware .pr { font-family: var(--display); font-weight: 700; }
+
+.nick { display: grid; gap: 2rem; }
+@media (min-width: 900px) { .nick { grid-template-columns: 1fr 1.3fr; gap: 4rem; } }
+.nick p { margin: 0 0 1rem; max-width: 38rem; }
+.said { margin: 0; padding: 1rem 0 0; border-top: 3px solid var(--rule); font-style: italic; font-size: 1.15rem; }
+.said cite { display: block; font-style: normal; font-family: var(--display); font-size: .8rem; letter-spacing: .08em; margin-top: .4rem; }
+
+/* ---------- close: the box set and the table ---------- */
+.fair { background: var(--rule); color: var(--parch); display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 900px) { .fair { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.fair img { border: 3px solid var(--glow); }
+.fair .tbl { font-family: var(--display); font-weight: 900; font-size: clamp(3.6rem, 14vw, 7rem); line-height: .9; color: #fff; -webkit-text-stroke: 2px var(--rule); paint-order: stroke fill; text-shadow: 0 0 10px rgba(230, 214, 90, .8); margin: .4rem 0; }
+.fair p { margin: .4rem 0; }
+.fair .fmt a { color: var(--rule); }
+.links { margin-top: 1.4rem; font-size: 1rem; }
+.links a { margin-right: .9rem; }
+footer { background: var(--rule); color: #b8ae9f; text-align: center; font-size: .9rem; padding: 1.2rem var(--gut) 5rem; border-top: 1px solid rgba(227,221,208,.2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { height: auto; }
+  .stage { position: relative; height: 100svh; }
+}
+</style>
+</head>
+<body>
+<div class="strip">A homepage idea made by Sparsh Saini for Nick Cennamo-Smith. Not their official site.</div>
+<button class="dia" aria-expanded="false" aria-controls="index" aria-label="Open the index">
+  <svg viewBox="0 0 92 46" aria-hidden="true"><path class="bg" d="M46 2 68 23 46 44 24 23z"/><path class="g" d="M46 4 66 23 46 42 26 23z M26 23 16 13 6 23 16 33z M66 23 76 13 86 23 76 33z"/><path d="M46 4 66 23 46 42 26 23z M26 23 16 13 6 23 16 33z M66 23 76 13 86 23 76 33z M16 18 21 23 16 28 11 23z M76 18 81 23 76 28 71 23z"/></svg>
+</button>
+<div class="index" id="index">
+  <nav class="sheet" aria-label="Index">
+    <h2>THE LEDGER</h2>
+    <ol>
+      <li><a href="#top"><span>The drop</span><span>the cover</span></a></li>
+      <li><a href="#cases"><span>The cases</span><span>five books</span></a></li>
+      <li><a href="#desk"><span>Other worlds</span><span>London, Los Blatta, a tavern</span></a></li>
+      <li><a href="#wares"><span>From Alda</span><span>tarot, postcards, bookmarks</span></a></li>
+      <li><a href="#nick"><span>Nick</span><span>about</span></a></li>
+      <li><a href="#fair"><span>Table S75</span><span>Oxford, 22 November</span></a></li>
+    </ol>
+  </nav>
+</div>
+
+<main>
+<section class="hero" id="top" aria-label="Mortzeel's Lost and Found">
+  <div class="stage">
+    <div class="cover">
+      <div class="in">
+        <img class="pl plate" src="img/plate.jpg" alt="" width="891" height="1377">
+        <img class="pl sigils" src="img/sigils.webp" alt="" width="891" height="1377">
+        <img class="pl sword" src="img/sword.webp" alt="The dragon-hilted sword from the cover of The One-Armed Wizard" width="677" height="1209">
+        <div class="ttl">
+          <h1><span class="w m">M</span><span class="w rt">ORTZEEL'S</span><span class="w lf">LOST<i>&amp;</i>FOUND</span></h1>
+          <div class="sub">The One-Armed Wizard</div>
+          <div class="by">NICK CENNAMO-SMITH</div>
+        </div>
+      </div>
+    </div>
+    <div class="cap">
+      <p class="c1">In a world of epic heroes and terrifying monsters someone has to have a day job.</p>
+      <p class="c2">Detective Kaivel Mortzeel and Tal'avera Liwood, an elven wizard fuelled by tea, take the cases nobody else will.<br><a class="go" href="https://www.nickcennamosmith.com/category/all-products">Open the shop</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="cases" id="cases">
+  <h2>The cases so far</h2>
+  <p class="lede">Mortzeel's Lost &amp; Found is a crime-fantasy series: a former thief with a somewhat mysterious past and an elven wizard still fuelled by tea, on investigations that lead them down dark and twisted paths, surviving on dumb luck and pure chaos.</p>
+  <ol class="ledger">
+    <li class="case" style="--c:var(--wiz)"><img src="img/wizard.jpg" alt="The One-Armed Wizard cover" width="480" height="742" loading="lazy"><div><span class="no">THE FIRST CASE</span><h3>The One-Armed Wizard</h3><p>Where Kaivel and Tal'avera start.</p><div class="fmt"><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-and-found-the-one-armed-wizard-audiobook">Audiobook £6</a></div></div></li>
+    <li class="case" style="--c:var(--noble)"><img src="img/noble.jpg" alt="A Noble Pursuit cover" width="480" height="742" loading="lazy"><div><span class="no">THE SECOND CASE</span><h3>A Noble Pursuit</h3><p>A deck of cards and a skull at its heart.</p><div class="fmt"><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-a-noble-pursuit-paperback">Paperback £8</a><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-a-noble-pursuit-hardback">Hardback £13</a><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-and-found-a-noble-pursuit-audiobook">Audiobook £6</a></div></div></li>
+    <li class="case" style="--c:var(--hart)"><img src="img/hart.jpg" alt="The Hart of Winter cover" width="480" height="742" loading="lazy"><div><span class="no">THE THIRD CASE</span><h3>The Hart of Winter</h3><p>A stag's skull, and a long cold one.</p><div class="fmt"><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-the-hart-of-winter-paperback">Paperback £8</a><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-the-hart-of-winter-hardback">Hardback £13</a></div></div></li>
+    <li class="case" style="--c:var(--death)"><img src="img/death.jpg" alt="Death from Above cover" width="480" height="742" loading="lazy"><div><span class="no">THE FOURTH CASE</span><h3>Death from Above</h3><p>Ice, falling.</p><div class="fmt"><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-death-from-above-paperback">Paperback £8</a><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-death-from-above-hardback">Hardback £13</a></div></div></li>
+    <li class="case" style="--c:var(--qalkar)"><img src="img/qalkar.jpg" alt="The Blade of Qalkar cover" width="480" height="765" loading="lazy"><div><span class="no">NEW ARRIVAL</span><h3>The Blade of Qalkar</h3><p>The newest case in the shop.</p><div class="fmt"><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-the-blade-of-qalkar">Paperback £8</a></div></div></li>
+  </ol>
+</section>
+
+<section class="desk" id="desk">
+  <h2>Other worlds on the desk</h2>
+  <p class="lede">Crime, fantasy, sci-fi and horror, blended for the ultimate escapism.</p>
+  <div class="worlds">
+    <div class="world"><img src="img/ratking.jpg" alt="The Rat King of London cover" width="480" height="742" loading="lazy"><div><h3>The Rat King of London</h3><p>London, 1889. Below the city, a society of hyper-intelligent rodents, victims of experimentation, faces its own industrial revolution.</p><a class="read" href="https://www.nickcennamosmith.com/product-page/the-rat-king-of-london-1">Paperback £8</a></div></div>
+    <div class="world"><img src="img/insecticide.jpg" alt="Insecticide cover" width="480" height="742" loading="lazy"><div><h3>Insecticide</h3><p>The city of Los Blatta is crawling with criminals. Detective Gene Hopper, a murder, and a world of humanoid insects. An episodic noir.</p><a class="read" href="https://www.patreon.com/collection/1552390">Read it on Patreon</a></div></div>
+    <div class="world"><img src="img/tavern.jpg" alt="I Used to be an Adventurer, but now I Run a Tavern cover" width="480" height="720" loading="lazy"><div><h3>I Used to be an Adventurer, but now I Run a Tavern</h3><p>A cosy light novel: Caelan Reed hangs up his sword to raise his daughter Elise and run the Hound and Hearth.</p><a class="read" href="https://www.patreon.com/collection/1600965">Read it on Patreon</a></div></div>
+  </div>
+</section>
+
+<section class="wares" id="wares">
+  <h2>From Alda</h2>
+  <p class="lede">Nick is a designer as well as a writer, and the world of the books comes off the page too.</p>
+  <div class="shelf">
+    <div class="ware"><img src="img/tarot.jpg" alt="The Gods of Alda tarot set, box and cards" width="700" height="632" loading="lazy"><h3>The Gods of Alda tarot set</h3><p><span class="pr">£35</span></p></div>
+    <div class="ware"><img src="img/postcards.jpg" alt="Postcards of Alda, painted street scenes" width="600" height="600" loading="lazy"><h3>Postcards of Alda</h3><p><span class="pr">50p each</span></p></div>
+    <div class="ware"><img src="img/bookmarks.jpg" alt="Wooden portrait bookmarks with gold tassels" width="360" height="654" loading="lazy" style="object-position:50% 35%"><h3>Wooden portrait bookmarks</h3><p><span class="pr">£3</span></p></div>
+    <div class="ware"><img src="img/boxset.jpg" alt="The hardback trilogy in its green slipcase" width="600" height="600" loading="lazy"><h3>The trilogy box sets</h3><p><span class="pr">Hardback £55</span>, limited. <span class="pr">Paperback £35</span>, pre-order.</p></div>
+  </div>
+  <div class="fmt" style="margin-top:1.6rem"><a href="https://www.nickcennamosmith.com/category/all-products">Everything in the shop</a></div>
+</section>
+
+<section class="nick" id="nick">
+  <div>
+    <h2>Nick</h2>
+    <p style="margin-top:1rem">Nick Cennamo-Smith writes crime-fantasy for adults and teens. He was born in Luton and has lived most of his life in various cities around the country.</p>
+    <p>When he isn't writing he works as a designer, spends time with his family, or rolls polyhedral dice in another fantasy world.</p>
+  </div>
+  <div>
+    <blockquote class="said">"The book has a lot of humour too, and tonally reminiscent of T. Kingfisher (who is my favourite author, so that's a compliment!)"<cite>LAZELLIA ON GOODREADS</cite></blockquote>
+    <blockquote class="said" style="margin-top:1.4rem">"Full of interesting characters, a fascinating blend of humans, trolls, orcs and mixtures of all sorts."<cite>SHARON GOODWIN ON AMAZON</cite></blockquote>
+  </div>
+</section>
+
+<section class="fair" id="fair">
+  <img src="img/boxset.jpg" alt="Mortzeel's Lost and Found hardback trilogy box set" width="600" height="600" loading="lazy">
+  <div>
+    <h2>Find the agency</h2>
+    <p>Oxford Indie Book Fair, Sunday 22 November, Oxford Examination Schools.</p>
+    <div class="tbl">TABLE S75</div>
+    <p>Bring the case you're stuck on. Or take the hardback trilogy home while the limited run lasts.</p>
+    <div class="fmt"><a href="https://www.nickcennamosmith.com/product-page/copy-of-mortzeel-s-lost-amp-found-3-book-set-hardback">Hardback set £55</a><a href="https://www.nickcennamosmith.com/product-page/mortzeel-s-lost-found-3-book-set-paperback">Paperback set £35</a></div>
+    <p class="links"><a href="https://www.patreon.com/nickcennamosmith">Patreon</a><a href="https://www.instagram.com/nick.cennamosmith">Instagram</a><a href="https://www.facebook.com/Nick.CennamoSmith">Facebook</a><a href="https://www.goodreads.com/author/show/28124127.Nick_Cennamo_Smith">Goodreads</a><a href="https://www.nickcennamosmith.com/contact">Contact</a></p>
+  </div>
+</section>
+</main>
+<footer>A mockup made by Sparsh Saini for Nick Cennamo-Smith. Not affiliated, not live.</footer>
+
+<script>
+(() => {
+  const btn = document.querySelector('.dia'), idx = document.getElementById('index');
+  const setOpen = o => { idx.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); if (o) idx.querySelector('a').focus(); };
+  btn.addEventListener('click', () => setOpen(!idx.classList.contains('open')));
+  idx.addEventListener('click', e => { if (e.target === idx || e.target.closest('a')) setOpen(false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+
+  // the drop: the sword comes down point first into its place on the cover; when the guard lands,
+  // the cover jolts, the title settles and the parchment's magic circles light up
+  const hero = document.querySelector('.hero');
+  const sword = hero.querySelector('.sword'), sig = hero.querySelector('.sigils'), inner = hero.querySelector('.in'), ttl = hero.querySelector('.ttl');
+  const c1 = hero.querySelector('.c1'), c2 = hero.querySelector('.c2');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  let ticking = false;
+  function frame() {
+    ticking = false;
+    let p;
+    if (still.matches) p = 1;
+    else { const r = hero.getBoundingClientRect(); p = clamp(-r.top / (hero.offsetHeight - innerHeight)); }
+    // fall: 0 to .62, accelerating like a dropped blade
+    const f = clamp(p / .62), fall = Math.pow(f, 1.6);
+    const y = -96 * (1 - fall);                 // percent of the sword's own height
+    const rot = -7 * (1 - f) * (1 - f);           // a little tilt that straightens as it falls
+    // landing: .62 to .8, a short damped shudder
+    const l = clamp((p - .62) / .18);
+    const shake = p > .62 ? Math.sin(l * Math.PI * 5) * (1 - l) * (1 - l) : 0;
+    sword.style.transform = `translateY(${(y + shake * 1.2).toFixed(2)}%) rotate(${rot.toFixed(2)}deg)`;
+    inner.style.transform = `translateY(${(shake * .6).toFixed(2)}%)`;
+    ttl.style.transform = `translateY(${(-shake * 1.4).toFixed(2)}%)`;
+    // the circles flare on impact, then settle to a glow
+    const fl = p < .62 ? 0 : l < .25 ? l / .25 : 1 - (l - .25) / .75 * .6;
+    sig.style.opacity = fl.toFixed(3);
+    const e = clamp((p - .7) / .15);
+    c1.style.opacity = (1 - e).toFixed(3); c2.classList.toggle('live', e > .5);
+    c2.style.opacity = e.toFixed(3);
+
+  }
+  const go = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  addEventListener('scroll', go, { passive: true });
+  addEventListener('resize', go);
+  still.addEventListener('change', go);
+  frame();
+})();
+</script>
+</body>
+</html>
